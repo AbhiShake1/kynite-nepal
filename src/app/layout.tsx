@@ -3,7 +3,11 @@ import { Comfortaa as Font } from "next/font/google";
 import "./globals.css";
 import { Layout } from "./_components/layout";
 
-const font = Font({})
+const font = Font({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
