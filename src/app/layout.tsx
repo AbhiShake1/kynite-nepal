@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Comfortaa as Font } from "next/font/google";
 import "./globals.css";
-import { Layout } from "./_components/layout";
+import Layout from "./_components/layout";
 
 const font = Font({
   subsets: ["latin"],
