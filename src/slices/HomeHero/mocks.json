@@ -1,0 +1,19 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"herotitle": {
+				"__TYPE__": "FieldContent",
+				"value": "how",
+				"type": "Text"
+			},
+			"herodescription": {
+				"__TYPE__": "FieldContent",
+				"value": "pressure",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

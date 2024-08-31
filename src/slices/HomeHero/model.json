@@ -1,0 +1,33 @@
+{
+  "id": "featured_products",
+  "type": "SharedSlice",
+  "name": "HomeHero",
+  "description": "FeaturedProducts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "herotitle": {
+          "type": "Text",
+          "config": {
+            "label": "heroTitle",
+            "placeholder": "Discover the Beauty of Kyanite"
+          }
+        },
+        "herodescription": {
+          "type": "Text",
+          "config": {
+            "label": "heroDescription",
+            "placeholder": "Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones."
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

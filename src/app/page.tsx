@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { ShoppingCartIcon } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 const products = [
   {
@@ -31,9 +33,15 @@ export default function Component() {
             </p>
           </div>
           <div className="flex flex-col gap-2 min-[400px]:flex-row">
-            <Button className="bg-blue-600 text-white hover:bg-blue-700">Shop Now</Button>
+            <Button className="bg-blue-600 text-white hover:bg-blue-700" asChild>
+              <Link href="/shop" className="flex items-center justify-center gap-2 px-4 py-2">
+                <span>Shop Now</span>
+              </Link>
+            </Button>
             <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-100">
-              Learn More
+              <Link href="/about" className="flex items-center justify-center gap-2 px-4 py-2">
+                <span>Learn More</span>
+              </Link>
             </Button>
           </div>
         </div>
