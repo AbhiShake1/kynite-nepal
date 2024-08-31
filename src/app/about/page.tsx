@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Page() {
   return (
@@ -73,7 +74,11 @@ export default function Page() {
           <p className="text-blue-800 mb-6">
             Experience the magic of kyanite jewelry-making firsthand. We offer guided tours of our workshop in Kathmandu.
           </p>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white">Book a Tour</Button>
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
+            <Link href="/workshop">
+              Book a Tour
+            </Link>
+          </Button>
         </div>
       </div>
     </main>
