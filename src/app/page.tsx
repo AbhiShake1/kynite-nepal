@@ -55,7 +55,7 @@ export default function Component() {
         <p className="mx-auto max-w-[700px] text-blue-800 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center">
           Kyanite Nepal is a premier manufacturer and retailer of high-quality kyanite and gemstone jewelry. With
           decades of experience, we combine traditional Nepalese craftsmanship with modern design to create unique,
-          stunning pieces that capture the essence of Nepal's natural beauty.
+          stunning pieces that capture the essence of Nepal&apos;s natural beauty.
         </p>
       </div>
     </section>

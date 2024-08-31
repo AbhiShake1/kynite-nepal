@@ -10,7 +10,7 @@ export default function Page() {
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="space-y-4">
           <p className="text-blue-800 leading-7">
-            Kyanite Nepal is a premier manufacturer and retailer of high-quality kyanite and gemstone jewelry. Founded in 1995 in the heart of Kathmandu, we have been crafting exquisite pieces that capture the essence of Nepal's natural beauty for over two decades.
+            Kyanite Nepal is a premier manufacturer and retailer of high-quality kyanite and gemstone jewelry. Founded in 1995 in the heart of Kathmandu, we have been crafting exquisite pieces that capture the essence of Nepal&apos;s natural beauty for over two decades.
           </p>
           <p className="text-blue-800 leading-7">
             Our journey began with a passion for the stunning blue kyanite found in the Himalayan mountains. Today, we combine traditional Nepalese craftsmanship with modern design to create unique, stunning pieces that are worn and cherished around the world.

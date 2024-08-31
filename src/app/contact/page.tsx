@@ -14,7 +14,7 @@ export default function Component() {
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-4">
             <p className="text-blue-800 leading-7">
-              We'd love to hear from you! Whether you have a question about our products, need assistance with an order, or want to learn more about our workshop tours, our team is here to help.
+              We&apos;d love to hear from you! Whether you have a question about our products, need assistance with an order, or want to learn more about our workshop tours, our team is here to help.
             </p>
             <Card className="backdrop-blur-md bg-white/30 border-white/20 overflow-hidden">
               <CardHeader>
