@@ -12,7 +12,7 @@ export function Header() {
       />
       <span className="ml-2 text-2xl font-bold text-blue-900">Kyanite Nepal</span>
     </a>
-    <nav className="ml-auto flex gap-4 sm:gap-6">
+    <nav className="ml-auto flex gap-4 sm:gap-6 text-primary">
       <a className="text-sm font-medium hover:text-blue-700 transition-colors" href="/">
         Home
       </a>
