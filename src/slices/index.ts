@@ -3,5 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  call_to_action: dynamic(() => import("./CallToAction")),
   featured_products: dynamic(() => import("./HomeHero")),
+  hero: dynamic(() => import("./Hero")),
 };

@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Comfortaa as Font } from "next/font/google";
 import "./globals.css";
 import Layout from "./_components/layout";
-import { repositoryName } from '@/prismicio'
-import { PrismicPreview } from '@prismicio/next'
+import Providers from "@/providers";
 
 const font = Font({
   subsets: ["latin"],
@@ -24,8 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Layout>{children}</Layout>
-        <PrismicPreview repositoryName={repositoryName} />
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
       </body>
     </html>
   );

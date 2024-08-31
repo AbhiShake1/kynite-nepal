@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"herodescription": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones."
-			},
 			"imageurl": {
 				"__TYPE__": "LinkContent",
 				"value": {
@@ -57,10 +52,27 @@
 					}
 				]
 			},
-			"herotitle": {
-				"__TYPE__": "FieldContent",
-				"type": "Text",
-				"value": "Discover the Beauty of Kyanite"
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Non eu quis deserunt veniam nulla ea ullamco laboris cupidatat excepteur cillum aliqua ut. Ea magna occaecat laboris."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Activity"
+						}
+					}
+				]
 			}
 		},
 		"items": []

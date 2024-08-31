@@ -4,27 +4,27 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HmeDocumentDataSlicesSlice = FeaturedProductsSlice;
+type HomeDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for home documents
  */
-interface HmeDocumentData {
+interface HomeDocumentData {
   /**
    * Slice Zone field in *home*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: hme.slices[]
+   * - **API ID Path**: home.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HmeDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
    * Meta Title field in *home*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: hme.meta_title
+   * - **API ID Path**: home.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
@@ -35,7 +35,7 @@ interface HmeDocumentData {
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: hme.meta_description
+   * - **API ID Path**: home.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -46,7 +46,7 @@ interface HmeDocumentData {
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: hme.meta_image
+   * - **API ID Path**: home.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
@@ -56,16 +56,171 @@ interface HmeDocumentData {
 /**
  * home document from Prismic
  *
- * - **API ID**: `hme`
+ * - **API ID**: `home`
  * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type HmeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<HmeDocumentData>, "hme", Lang>;
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = HmeDocument;
+export type AllDocumentTypes = HomeDocument;
+
+/**
+ * Primary content in *CallToAction → Default → Primary*
+ */
+export interface CallToActionSliceDefaultPrimary {
+  /**
+   * Image field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * title field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * paragraph field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.default.primary.paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph: prismic.RichTextField;
+
+  /**
+   * buttonLink field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Redirect URL for CTA button
+   * - **API ID Path**: call_to_action.default.primary.buttonLink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  buttonLink: prismic.LinkField;
+
+  /**
+   * buttonLabel field in *CallToAction → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Label for CTA button
+   * - **API ID Path**: call_to_action.default.primary.buttonLabel
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  buttonLabel: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for CallToAction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CallToActionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *CallToAction → AlignLeft → Primary*
+ */
+export interface CallToActionSliceAlignLeftPrimary {
+  /**
+   * Image field in *CallToAction → AlignLeft → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.alignLeft.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * title field in *CallToAction → AlignLeft → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.alignLeft.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * paragraph field in *CallToAction → AlignLeft → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.alignLeft.primary.paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraph: prismic.RichTextField;
+
+  /**
+   * buttonLink field in *CallToAction → AlignLeft → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Redirect URL for CTA button
+   * - **API ID Path**: call_to_action.alignLeft.primary.buttonLink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  buttonLink: prismic.LinkField;
+
+  /**
+   * buttonLabel field in *CallToAction → AlignLeft → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Label for CTA button
+   * - **API ID Path**: call_to_action.alignLeft.primary.buttonLabel
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  buttonLabel: prismic.KeyTextField;
+}
+
+/**
+ * AlignLeft variation for CallToAction Slice
+ *
+ * - **API ID**: `alignLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceAlignLeft = prismic.SharedSliceVariation<
+  "alignLeft",
+  Simplify<CallToActionSliceAlignLeftPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CallToAction*
+ */
+type CallToActionSliceVariation =
+  | CallToActionSliceDefault
+  | CallToActionSliceAlignLeft;
+
+/**
+ * CallToAction Shared Slice
+ *
+ * - **API ID**: `call_to_action`
+ * - **Description**: CallToAction
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlice = prismic.SharedSlice<
+  "call_to_action",
+  CallToActionSliceVariation
+>;
 
 /**
  * Item in *HomeHero → Default → Primary → ctaButtons*
@@ -87,24 +242,24 @@ export interface FeaturedProductsSliceDefaultPrimaryCtabuttonsItem {
  */
 export interface FeaturedProductsSliceDefaultPrimary {
   /**
-   * heroTitle field in *HomeHero → Default → Primary*
+   * title field in *HomeHero → Default → Primary*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Discover the Beauty of Kyanite
-   * - **API ID Path**: featured_products.default.primary.herotitle
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  herotitle: prismic.KeyTextField;
+  title: prismic.RichTextField;
 
   /**
-   * heroDescription field in *HomeHero → Default → Primary*
+   * description field in *HomeHero → Default → Primary*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones.
-   * - **API ID Path**: featured_products.default.primary.herodescription
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  herodescription: prismic.KeyTextField;
+  description: prismic.RichTextField;
 
   /**
    * imageUrl field in *HomeHero → Default → Primary*
@@ -159,6 +314,103 @@ export type FeaturedProductsSlice = prismic.SharedSlice<
   FeaturedProductsSliceVariation
 >;
 
+/**
+ * Item in *Hero → Image Right → Primary → cta*
+ */
+export interface HeroSliceImageRightPrimaryCtaItem {
+  /**
+   * ctaLink field in *Hero → Image Right → Primary → cta*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.imageRight.primary.cta[].ctalink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  ctalink: prismic.LinkField;
+
+  /**
+   * ctaLabel field in *Hero → Image Right → Primary → cta*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.imageRight.primary.cta[].ctalabel
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  ctalabel: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Hero → Image Right → Primary*
+ */
+export interface HeroSliceImageRightPrimary {
+  /**
+   * title field in *Hero → Image Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.imageRight.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *Hero → Image Right → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.imageRight.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * image field in *Hero → Image Right → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.imageRight.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * cta field in *Hero → Image Right → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.imageRight.primary.cta[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cta: prismic.GroupField<Simplify<HeroSliceImageRightPrimaryCtaItem>>;
+}
+
+/**
+ * Image Right variation for Hero Slice
+ *
+ * - **API ID**: `imageRight`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceImageRight = prismic.SharedSliceVariation<
+  "imageRight",
+  Simplify<HeroSliceImageRightPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HeroSliceVariation = HeroSliceImageRight;
+
+/**
+ * Hero Shared Slice
+ *
+ * - **API ID**: `hero`
+ * - **Description**: Hero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -169,15 +421,26 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      HmeDocument,
-      HmeDocumentData,
-      HmeDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CallToActionSlice,
+      CallToActionSliceDefaultPrimary,
+      CallToActionSliceAlignLeftPrimary,
+      CallToActionSliceVariation,
+      CallToActionSliceDefault,
+      CallToActionSliceAlignLeft,
       FeaturedProductsSlice,
       FeaturedProductsSliceDefaultPrimaryCtabuttonsItem,
       FeaturedProductsSliceDefaultPrimary,
       FeaturedProductsSliceVariation,
       FeaturedProductsSliceDefault,
+      HeroSlice,
+      HeroSliceImageRightPrimaryCtaItem,
+      HeroSliceImageRightPrimary,
+      HeroSliceVariation,
+      HeroSliceImageRight,
     };
   }
 }

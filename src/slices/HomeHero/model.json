@@ -12,18 +12,22 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "herotitle": {
-          "type": "Text",
+        "title": {
+          "type": "StructuredText",
           "config": {
-            "label": "heroTitle",
-            "placeholder": "Discover the Beauty of Kyanite"
+            "label": "title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "herodescription": {
-          "type": "Text",
+        "description": {
+          "type": "StructuredText",
           "config": {
-            "label": "heroDescription",
-            "placeholder": "Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones."
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
         "imageurl": {

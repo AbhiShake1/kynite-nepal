@@ -1,0 +1,93 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "imageRight",
+		"primary": {
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"image": {
+				"provider": "imgix",
+				"url": "https://images.unsplash.com/photo-1551947391-249dcb8ed976?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxnZW18ZW58MHx8fHwxNzI1MTI2NDIzfDA&ixlib=rb-4.0.3&q=85",
+				"alt": "teardrop shape amethyst stone",
+				"origin": {
+					"id": "7ZmtUtAArRI",
+					"url": "https://images.unsplash.com/photo-1551947391-249dcb8ed976?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxnZW18ZW58MHx8fHwxNzI1MTI2NDIzfDA&ixlib=rb-4.0.3&q=85",
+					"width": 3264,
+					"height": 2448
+				},
+				"width": 3264,
+				"height": 2448,
+				"edit": {
+					"background": "transparent",
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					}
+				},
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Discover the Beauty of Kyanite",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"cta": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"ctalink",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com"
+									}
+								}
+							],
+							[
+								"ctalabel",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nisi deserunt qui ex consectetur duis ea amet enim laboris eu fugiat occaecat occaecat. Veniam proident sunt sunt laborum velit labore eiusmod qui aute irure enim minim occaecat est."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

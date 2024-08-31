@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ShoppingCartIcon } from "lucide-react"
+import { SliceZone } from "@prismicio/react"
 import Image from "next/image"
-import Link from "next/link"
+import { createClient } from "@/prismicio"
+import { components } from "@/slices"
 
 const products = [
   {
@@ -19,44 +20,13 @@ const products = [
   }
 ]
 
-export default function Component() {
+export default async function Page() {
+  const client = createClient()
+
+  const home = await client.getSingle("home")
+
   return <>
-    <section className="py-12 md:py-24 lg:py-32 xl:py-48">
-      <div className="container px-4 md:px-6"> <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-        <div className="flex flex-col justify-center space-y-4">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-blue-900">
-              Discover the Beauty of Kyanite
-            </h1>
-            <p className="max-w-[600px] text-blue-800 md:text-xl">
-              Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones.
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 min-[400px]:flex-row">
-            <Button className="bg-blue-600 text-white hover:bg-blue-700" asChild>
-              <Link href="/shop" className="flex items-center justify-center gap-2 px-4 py-2">
-                <span>Shop Now</span>
-              </Link>
-            </Button>
-            <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-100">
-              <Link href="/about" className="flex items-center justify-center gap-2 px-4 py-2">
-                <span>Learn More</span>
-              </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="backdrop-blur-md bg-white/30 rounded-xl p-2">
-          <Image
-            alt="Featured Kyanite Necklace"
-            className="mx-auto aspect-video overflow-hidden rounded-lg object-cover object-center sm:w-full lg:order-last"
-            height="550"
-            src="/placeholder.svg?height=550&width=400"
-            width="400"
-          />
-        </div>
-      </div>
-      </div>
-    </section>
+    <SliceZone slices={home.data.slices} components={components} />
     <section className="w-full py-12 md:py-24 lg:py-32 backdrop-blur-sm bg-blue-500/10">
       <div className="container px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8 text-blue-900">About Us</h2>
