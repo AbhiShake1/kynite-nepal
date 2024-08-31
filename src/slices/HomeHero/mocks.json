@@ -3,15 +3,64 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"herotitle": {
-				"__TYPE__": "FieldContent",
-				"value": "how",
-				"type": "Text"
-			},
 			"herodescription": {
 				"__TYPE__": "FieldContent",
-				"value": "pressure",
-				"type": "Text"
+				"type": "Text",
+				"value": "Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones."
+			},
+			"imageurl": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ImageLink",
+					"id": "kHrrHMMG-ME",
+					"name": "oval blue and black accessory on white surface",
+					"kind": "image",
+					"url": "https://images.unsplash.com/photo-1534883031555-7d18c6cf52e7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw4fHxnZW18ZW58MHx8fHwxNzI1MTI2NDIzfDA&ixlib=rb-4.0.3&q=85",
+					"size": "0",
+					"height": "2712",
+					"width": "4096"
+				}
+			},
+			"ctabuttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"ctabutton",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "/shop"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"ctabutton",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "/",
+										"target": ""
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"herotitle": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Discover the Beauty of Kyanite"
 			}
 		},
 		"items": []

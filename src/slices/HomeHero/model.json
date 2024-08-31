@@ -25,6 +25,32 @@
             "label": "heroDescription",
             "placeholder": "Exquisite jewelry crafted with the finest Nepalese kyanite and precious gemstones."
           }
+        },
+        "imageurl": {
+          "type": "Link",
+          "config": {
+            "label": "imageUrl",
+            "placeholder": "https://t3.ftcdn.net/jpg/09/35/35/74/360_F_935357401_HqLmEodQnYeiUqxhOA33n9NXwahMb0EQ.jpg",
+            "select": "media"
+          }
+        },
+        "ctabuttons": {
+          "type": "Group",
+          "config": {
+            "label": "ctaButtons",
+            "repeat": true,
+            "fields": {
+              "ctabutton": {
+                "type": "Link",
+                "config": {
+                  "label": "ctaButton",
+                  "placeholder": "/shop",
+                  "allowTargetBlank": true,
+                  "select": null
+                }
+              }
+            }
+          }
         }
       },
       "items": {}

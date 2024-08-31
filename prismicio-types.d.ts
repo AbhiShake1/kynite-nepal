@@ -68,6 +68,21 @@ export type HmeDocument<Lang extends string = string> =
 export type AllDocumentTypes = HmeDocument;
 
 /**
+ * Item in *HomeHero → Default → Primary → ctaButtons*
+ */
+export interface FeaturedProductsSliceDefaultPrimaryCtabuttonsItem {
+  /**
+   * ctaButton field in *HomeHero → Default → Primary → ctaButtons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: /shop
+   * - **API ID Path**: featured_products.default.primary.ctabuttons[].ctabutton
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  ctabutton: prismic.LinkField;
+}
+
+/**
  * Primary content in *HomeHero → Default → Primary*
  */
 export interface FeaturedProductsSliceDefaultPrimary {
@@ -90,6 +105,28 @@ export interface FeaturedProductsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   herodescription: prismic.KeyTextField;
+
+  /**
+   * imageUrl field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: https://t3.ftcdn.net/jpg/09/35/35/74/360_F_935357401_HqLmEodQnYeiUqxhOA33n9NXwahMb0EQ.jpg
+   * - **API ID Path**: featured_products.default.primary.imageurl
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  imageurl: prismic.LinkToMediaField;
+
+  /**
+   * ctaButtons field in *HomeHero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.ctabuttons[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  ctabuttons: prismic.GroupField<
+    Simplify<FeaturedProductsSliceDefaultPrimaryCtabuttonsItem>
+  >;
 }
 
 /**
@@ -137,6 +174,7 @@ declare module "@prismicio/client" {
       HmeDocumentDataSlicesSlice,
       AllDocumentTypes,
       FeaturedProductsSlice,
+      FeaturedProductsSliceDefaultPrimaryCtabuttonsItem,
       FeaturedProductsSliceDefaultPrimary,
       FeaturedProductsSliceVariation,
       FeaturedProductsSliceDefault,
