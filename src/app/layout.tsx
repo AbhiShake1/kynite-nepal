@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className} style={{ colorScheme: "light", backgroundColor: "whitesmoke" }}>
+      <body className={font.className}>
         <Layout>{children}</Layout>
       </body>
     </html>
