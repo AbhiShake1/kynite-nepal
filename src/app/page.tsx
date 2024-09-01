@@ -27,16 +27,6 @@ export default async function Page() {
 
   return <>
     <SliceZone slices={home.data.slices} components={components} />
-    <section className="w-full py-12 md:py-24 lg:py-32 backdrop-blur-sm bg-blue-500/10">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8 text-blue-900">About Us</h2>
-        <p className="mx-auto max-w-[700px] text-blue-800 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center">
-          Kyanite Nepal is a premier manufacturer and retailer of high-quality kyanite and gemstone jewelry. With
-          decades of experience, we combine traditional Nepalese craftsmanship with modern design to create unique,
-          stunning pieces that capture the essence of Nepal&apos;s natural beauty.
-        </p>
-      </div>
-    </section>
     <section className="w-full py-12 md:py-24 lg:py-32">
       <div className="container px-4 md:px-6">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-8 text-blue-900">Featured Products</h2>

@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = HeroSlice;
+type HomeDocumentDataSlicesSlice = AboutUsSectionSlice | HeroSlice;
 
 /**
  * Content for home documents
@@ -65,7 +65,94 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = HomeDocument;
+/**
+ * Content for Product documents
+ */
+interface ProductDocumentData {
+  /**
+   * image field in *Product*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Product document from Prismic
+ *
+ * - **API ID**: `product`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProductDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProductDocumentData>,
+    "product",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomeDocument | ProductDocument;
+
+/**
+ * Primary content in *AboutUsSection → Default → Primary*
+ */
+export interface AboutUsSectionSliceDefaultPrimary {
+  /**
+   * title field in *AboutUsSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_section.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *AboutUsSection → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us_section.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for AboutUsSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsSectionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsSectionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUsSection*
+ */
+type AboutUsSectionSliceVariation = AboutUsSectionSliceDefault;
+
+/**
+ * AboutUsSection Shared Slice
+ *
+ * - **API ID**: `about_us_section`
+ * - **Description**: AboutUsSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsSectionSlice = prismic.SharedSlice<
+  "about_us_section",
+  AboutUsSectionSliceVariation
+>;
 
 /**
  * Primary content in *CallToAction → Default → Primary*
@@ -424,7 +511,13 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      ProductDocument,
+      ProductDocumentData,
       AllDocumentTypes,
+      AboutUsSectionSlice,
+      AboutUsSectionSliceDefaultPrimary,
+      AboutUsSectionSliceVariation,
+      AboutUsSectionSliceDefault,
       CallToActionSlice,
       CallToActionSliceDefaultPrimary,
       CallToActionSliceAlignLeftPrimary,

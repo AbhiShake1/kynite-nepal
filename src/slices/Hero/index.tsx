@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { type Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { ArrowRight, ChevronsRight, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
@@ -20,14 +21,16 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             </p>
           </div>
           <div className="flex flex-col gap-2 min-[400px]:flex-row">
-            <Button className="bg-blue-600 text-white hover:bg-blue-700" asChild>
-              <Link href="/shop" className="flex items-center justify-center gap-2 px-4 py-2">
+            <Button asChild>
+              <Link href="/shop" className="gap-2">
+                <ShoppingCart />
                 <span>Shop Now</span>
               </Link>
             </Button>
-            <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-100">
-              <Link href="/about" className="flex items-center justify-center gap-2 px-4 py-2">
+            <Button variant="secondary" asChild>
+              <Link href="/about" className="gap-2">
                 <span>Learn More</span>
+                <ArrowRight />
               </Link>
             </Button>
           </div>

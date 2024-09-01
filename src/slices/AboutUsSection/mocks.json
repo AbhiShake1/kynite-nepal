@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est amet eiusmod id ex pariatur duis officia. Consectetur quis cillum veniam ad ipsum officia. Voluptate aliqua sunt in."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Breakfast"
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
