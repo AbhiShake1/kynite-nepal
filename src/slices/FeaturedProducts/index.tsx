@@ -26,7 +26,7 @@ const FeaturedProducts = async ({ slice }: FeaturedProductsProps) => {
       </h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          products.map(({ product }) => <FeaturedProductCard product={product} />)
+          products.map(({ product }, i) => <FeaturedProductCard key={i} product={product} />)
         }
       </div>
     </div>
