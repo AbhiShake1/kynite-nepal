@@ -104,6 +104,28 @@ interface ProductDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
+  /**
+   * price field in *Product*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.price
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#number
+   */
+  price: prismic.NumberField;
+
+  /**
+   * category field in *Product*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"necklace" | "earring" | "bracelet" | "raw">;
 }
 
 /**
@@ -122,7 +144,68 @@ export type ProductDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | ProductDocument;
+type ShopDocumentDataSlicesSlice = never;
+
+/**
+ * Content for shop documents
+ */
+interface ShopDocumentData {
+  /**
+   * Slice Zone field in *shop*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shop.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ShopDocumentDataSlicesSlice> /**
+   * Meta Title field in *shop*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: shop.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *shop*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: shop.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *shop*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shop.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * shop document from Prismic
+ *
+ * - **API ID**: `shop`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ShopDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<ShopDocumentData>, "shop", Lang>;
+
+export type AllDocumentTypes = HomeDocument | ProductDocument | ShopDocument;
 
 /**
  * Primary content in *AboutUsSection → Default → Primary*
@@ -363,6 +446,9 @@ declare module "@prismicio/client" {
       HomeDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
+      ShopDocument,
+      ShopDocumentData,
+      ShopDocumentDataSlicesSlice,
       AllDocumentTypes,
       AboutUsSectionSlice,
       AboutUsSectionSliceDefaultPrimary,

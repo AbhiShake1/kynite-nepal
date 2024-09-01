@@ -7,25 +7,26 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Menu, X } from "lucide-react"
-import Image from "next/image"
-
-const products = [
-  { id: 1, name: "Kyanite Pendant Necklace", price: 129.99, category: "Necklaces" },
-  { id: 2, name: "Kyanite Stud Earrings", price: 79.99, category: "Earrings" },
-  { id: 3, name: "Kyanite Tennis Bracelet", price: 199.99, category: "Bracelets" },
-  { id: 4, name: "Kyanite and Diamond Ring", price: 299.99, category: "Rings" },
-  { id: 5, name: "Kyanite Drop Earrings", price: 89.99, category: "Earrings" },
-  { id: 6, name: "Kyanite Bangle", price: 149.99, category: "Bracelets" },
-  { id: 7, name: "Kyanite Choker Necklace", price: 109.99, category: "Necklaces" },
-  { id: 8, name: "Kyanite Cocktail Ring", price: 179.99, category: "Rings" },
-  { id: 9, name: "Kyanite Anklet", price: 69.99, category: "Anklets" },
-]
+import { createClient } from '@/prismicio'
+import { useQuery } from "react-query"
+import { PrismicNextImage } from '@prismicio/next'
+import { PrismicRichText } from '@prismicio/react'
+// import Form from "next/form"
 
 export default function Page() {
+  const client = createClient()
+
+  const { data: products } = useQuery({
+    queryKey: ['products'],
+    queryFn: () => client.getAllByType('product'),
+  })
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [priceRange, setPriceRange] = useState([0, 300])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [sortOrder, setSortOrder] = useState("featured")
+
+  if (!products) return null
 
   const toggleCategory = (category: string) => {
     setSelectedCategories(prev =>
@@ -36,19 +37,24 @@ export default function Page() {
   }
 
   const filteredProducts = products
-    .filter(product =>
-      (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
-      product.price >= priceRange[0] && product.price <= priceRange[1]
+    .map(p => p.data)
+    .filter(product => true
+      // (selectedCategories.length === 0 || (!product.category || selectedCategories.includes(product.category))) &&
+      // product.price &&
+      // product.price >= priceRange[0] && product.price <= priceRange[1]
     )
     .sort((a, b) => {
+      if (!a.price || !b.price) return 0
       if (sortOrder === "price-asc") return a.price - b.price
       if (sortOrder === "price-desc") return b.price - a.price
-      return 0 // featured
+      return 0
     })
 
   return (
     <div className="container px-4 md:px-6 w-full">
-      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-900 mb-4">Shop Our Collection</h1>
+      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-900 mb-4">
+        Shop Our Collection
+      </h1>
       <div className="flex flex-col md:flex-row gap-6">
         <aside className="w-full md:w-64 backdrop-blur-md bg-white/30 p-4 rounded-lg">
           <div className="flex items-center justify-between md:hidden mb-4">
@@ -102,17 +108,14 @@ export default function Page() {
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product) => (
-              <Card key={product.id} className="backdrop-blur-md bg-white/30 border-white/20 overflow-hidden">
+              // @ts-expect-error uid exists
+              <Card key={product.uid} className="backdrop-blur-md bg-white/30 border-white/20 overflow-hidden">
                 <CardContent className="p-4">
-                  <Image
-                    src={`/placeholder.svg?height=200&width=200&text=${product.name.replace(/ /g, '+')}`}
-                    alt={product.name}
-                    width={200}
-                    height={200}
-                    className="w-full h-48 object-cover rounded-md mb-4"
-                  />
-                  <h3 className="text-lg font-semibold text-blue-900">{product.name}</h3>
-                  <p className="text-blue-800">${product.price.toFixed(2)}</p>
+                  <PrismicNextImage field={product.image} />
+                  <h3 className="text-lg font-semibold text-blue-900">
+                    <PrismicRichText field={product.title} />
+                  </h3>
+                  <p className="text-blue-800">${product.price?.toFixed(2) ?? 0}</p>
                   <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">Add to Cart</Button>
                 </CardContent>
               </Card>
