@@ -199,6 +199,16 @@ export interface FeaturedProductsSliceDefaultPrimaryProductsItem {
  */
 export interface FeaturedProductsSliceDefaultPrimary {
   /**
+   * title field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
    * products field in *FeaturedProducts → Default → Primary*
    *
    * - **Field Type**: Group
@@ -209,16 +219,6 @@ export interface FeaturedProductsSliceDefaultPrimary {
   products: prismic.GroupField<
     Simplify<FeaturedProductsSliceDefaultPrimaryProductsItem>
   >;
-
-  /**
-   * title field in *FeaturedProducts → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
 }
 
 /**

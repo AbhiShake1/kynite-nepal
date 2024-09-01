@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { type Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { ArrowRight, ChevronsRight, ShoppingCart } from "lucide-react";
+import { ArrowRight, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
