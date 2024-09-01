@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = AboutUsSectionSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice =
+  | FeaturedProductsSlice
+  | AboutUsSectionSlice
+  | HeroSlice;
 
 /**
  * Content for home documents
@@ -79,6 +82,28 @@ interface ProductDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * title field in *Product*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *Product*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: product.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 /**
@@ -155,181 +180,38 @@ export type AboutUsSectionSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *CallToAction → Default → Primary*
+ * Item in *FeaturedProducts → Default → Primary → products*
  */
-export interface CallToActionSliceDefaultPrimary {
+export interface FeaturedProductsSliceDefaultPrimaryProductsItem {
   /**
-   * Image field in *CallToAction → Default → Primary*
+   * product field in *FeaturedProducts → Default → Primary → products*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.default.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * title field in *CallToAction → Default → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * paragraph field in *CallToAction → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.default.primary.paragraph
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  paragraph: prismic.RichTextField;
-
-  /**
-   * buttonLink field in *CallToAction → Default → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Redirect URL for CTA button
-   * - **API ID Path**: call_to_action.default.primary.buttonLink
+   * - **API ID Path**: featured_products.default.primary.products[].product
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  buttonLink: prismic.LinkField;
-
-  /**
-   * buttonLabel field in *CallToAction → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Label for CTA button
-   * - **API ID Path**: call_to_action.default.primary.buttonLabel
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  buttonLabel: prismic.KeyTextField;
+  product: prismic.ContentRelationshipField<"product">;
 }
 
 /**
- * Default variation for CallToAction Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CallToActionSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<CallToActionSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Primary content in *CallToAction → AlignLeft → Primary*
- */
-export interface CallToActionSliceAlignLeftPrimary {
-  /**
-   * Image field in *CallToAction → AlignLeft → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.alignLeft.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
-
-  /**
-   * title field in *CallToAction → AlignLeft → Primary*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.alignLeft.primary.title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * paragraph field in *CallToAction → AlignLeft → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: call_to_action.alignLeft.primary.paragraph
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  paragraph: prismic.RichTextField;
-
-  /**
-   * buttonLink field in *CallToAction → AlignLeft → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: Redirect URL for CTA button
-   * - **API ID Path**: call_to_action.alignLeft.primary.buttonLink
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  buttonLink: prismic.LinkField;
-
-  /**
-   * buttonLabel field in *CallToAction → AlignLeft → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: Label for CTA button
-   * - **API ID Path**: call_to_action.alignLeft.primary.buttonLabel
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  buttonLabel: prismic.KeyTextField;
-}
-
-/**
- * AlignLeft variation for CallToAction Slice
- *
- * - **API ID**: `alignLeft`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CallToActionSliceAlignLeft = prismic.SharedSliceVariation<
-  "alignLeft",
-  Simplify<CallToActionSliceAlignLeftPrimary>,
-  never
->;
-
-/**
- * Slice variation for *CallToAction*
- */
-type CallToActionSliceVariation =
-  | CallToActionSliceDefault
-  | CallToActionSliceAlignLeft;
-
-/**
- * CallToAction Shared Slice
- *
- * - **API ID**: `call_to_action`
- * - **Description**: CallToAction
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CallToActionSlice = prismic.SharedSlice<
-  "call_to_action",
-  CallToActionSliceVariation
->;
-
-/**
- * Item in *HomeHero → Default → Primary → ctaButtons*
- */
-export interface FeaturedProductsSliceDefaultPrimaryCtabuttonsItem {
-  /**
-   * ctaButton field in *HomeHero → Default → Primary → ctaButtons*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: /shop
-   * - **API ID Path**: featured_products.default.primary.ctabuttons[].ctabutton
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  ctabutton: prismic.LinkField;
-}
-
-/**
- * Primary content in *HomeHero → Default → Primary*
+ * Primary content in *FeaturedProducts → Default → Primary*
  */
 export interface FeaturedProductsSliceDefaultPrimary {
   /**
-   * title field in *HomeHero → Default → Primary*
+   * products field in *FeaturedProducts → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_products.default.primary.products[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  products: prismic.GroupField<
+    Simplify<FeaturedProductsSliceDefaultPrimaryProductsItem>
+  >;
+
+  /**
+   * title field in *FeaturedProducts → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -337,42 +219,10 @@ export interface FeaturedProductsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.RichTextField;
-
-  /**
-   * description field in *HomeHero → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * imageUrl field in *HomeHero → Default → Primary*
-   *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: https://t3.ftcdn.net/jpg/09/35/35/74/360_F_935357401_HqLmEodQnYeiUqxhOA33n9NXwahMb0EQ.jpg
-   * - **API ID Path**: featured_products.default.primary.imageurl
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  imageurl: prismic.LinkToMediaField;
-
-  /**
-   * ctaButtons field in *HomeHero → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: featured_products.default.primary.ctabuttons[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  ctabuttons: prismic.GroupField<
-    Simplify<FeaturedProductsSliceDefaultPrimaryCtabuttonsItem>
-  >;
 }
 
 /**
- * Default variation for HomeHero Slice
+ * Default variation for FeaturedProducts Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -385,12 +235,12 @@ export type FeaturedProductsSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *HomeHero*
+ * Slice variation for *FeaturedProducts*
  */
 type FeaturedProductsSliceVariation = FeaturedProductsSliceDefault;
 
 /**
- * HomeHero Shared Slice
+ * FeaturedProducts Shared Slice
  *
  * - **API ID**: `featured_products`
  * - **Description**: FeaturedProducts
@@ -518,14 +368,8 @@ declare module "@prismicio/client" {
       AboutUsSectionSliceDefaultPrimary,
       AboutUsSectionSliceVariation,
       AboutUsSectionSliceDefault,
-      CallToActionSlice,
-      CallToActionSliceDefaultPrimary,
-      CallToActionSliceAlignLeftPrimary,
-      CallToActionSliceVariation,
-      CallToActionSliceDefault,
-      CallToActionSliceAlignLeft,
       FeaturedProductsSlice,
-      FeaturedProductsSliceDefaultPrimaryCtabuttonsItem,
+      FeaturedProductsSliceDefaultPrimaryProductsItem,
       FeaturedProductsSliceDefaultPrimary,
       FeaturedProductsSliceVariation,
       FeaturedProductsSliceDefault,
