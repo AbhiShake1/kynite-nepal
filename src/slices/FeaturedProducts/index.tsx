@@ -4,6 +4,7 @@ import { createClient } from "@/prismicio";
 import { Content, ContentRelationshipField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { Suspense } from "react";
 
 /**
  * Props for `FeaturedProducts`.
@@ -26,7 +27,9 @@ const FeaturedProducts = async ({ slice }: FeaturedProductsProps) => {
       </h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          products.map(({ product }, i) => <FeaturedProductCard key={i} product={product} />)
+          products.map(({ product }, i) => <Suspense fallback={<div className="w-full h-64 bg-gray-200 animate-pulse"></div>} key={i}>
+            <FeaturedProductCard product={product} />
+          </Suspense>)
         }
       </div>
     </div>
