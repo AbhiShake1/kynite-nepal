@@ -23,11 +23,11 @@ export default function Component() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-2">
                   <MapPin className="h-5 w-5 text-blue-700" />
-                  <span className="text-blue-800">123 Jewelry Lane, Kathmandu, Nepal</span>
+                  <span className="text-blue-800">Birendranagar-2, Surkhet, Nepal</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Phone className="h-5 w-5 text-blue-700" />
-                  <span className="text-blue-800">+977 1 234 5678</span>
+                  <a href="tel:+9779858050646" className="text-blue-800">+977 9858050646</a>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="h-5 w-5 text-blue-700" />
