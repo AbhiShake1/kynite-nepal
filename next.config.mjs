@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: [
+      "www.gemselect.com",
       "shorturl.at",
       "aceternity.com",
       "t3.ftcdn.net",

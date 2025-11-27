@@ -116,51 +116,51 @@ export default async function Page() {
   const home = await client.getSingle("home");
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-cyan-100 dark:from-blue-950 dark:to-blue-900">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-cyan-100 dark:from-blue-950 dark:to-blue-900 w-full overflow-x-hidden">
       {/* Hero Parallax Section */}
       <HeroParallax products={products} />
 
       {/* Additional Content Section */}
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300 mb-4">
+      <div className="max-w-7xl mx-auto px-4 py-10 sm:py-20">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300 mb-4">
             Discover the Beauty of Kyanite
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-2xl mx-auto">
             Experience the unique beauty and healing properties of authentic Nepalese kyanite stones.
             Each piece is carefully selected and ethically sourced.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-200/50 dark:border-blue-800/50">
-            <div className="text-blue-600 dark:text-blue-300 text-3xl mb-4">💎</div>
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Authentic Origin</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-10 sm:mb-16">
+          <div className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-200/50 dark:border-blue-800/50">
+            <div className="text-blue-600 dark:text-blue-300 text-2xl sm:text-3xl mb-3 sm:mb-4">💎</div>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-2">Authentic Origin</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
               Sourced directly from the Himalayan mines of Nepal, ensuring authenticity and quality.
             </p>
           </div>
 
-          <div className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-200/50 dark:border-blue-800/50">
-            <div className="text-blue-600 dark:text-blue-300 text-3xl mb-4">✨</div>
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Healing Properties</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+          <div className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-200/50 dark:border-blue-800/50">
+            <div className="text-blue-600 dark:text-blue-300 text-2xl sm:text-3xl mb-3 sm:mb-4">✨</div>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-2">Healing Properties</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
               Kyanite is known for its calming energy and ability to align chakras.
             </p>
           </div>
 
-          <div className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-200/50 dark:border-blue-800/50">
-            <div className="text-blue-600 dark:text-blue-300 text-3xl mb-4">🏔️</div>
-            <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">Ethical Sourcing</h3>
-            <p className="text-gray-600 dark:text-gray-300">
+          <div className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-4 sm:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-blue-200/50 dark:border-blue-800/50">
+            <div className="text-blue-600 dark:text-blue-300 text-2xl sm:text-3xl mb-3 sm:mb-4">🏔️</div>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white mb-2">Ethical Sourcing</h3>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
               We ensure fair trade practices and support local Nepalese communities.
             </p>
           </div>
         </div>
 
-        <div className="text-center mb-20">
+        <div className="text-center mb-10 sm:mb-20">
           <Link href="/shop">
-            <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-4 text-base sm:text-lg sm:px-8 sm:py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Explore Our Collection
             </Button>
           </Link>
@@ -174,16 +174,16 @@ export default async function Page() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300 mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300 mb-3 sm:mb-4">
               What Our Customers Say
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-2xl mx-auto">
               Hear from our satisfied customers about their experience with our kyanite collection.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
               <motion.div
                 key={testimonial.id}
@@ -192,24 +192,24 @@ export default async function Page() {
                 transition={{ duration: 0.5, delay: testimonial.id * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-6 h-full border border-blue-200/50 dark:border-blue-800/50 shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-900/50 dark:to-cyan-900/50 flex items-center justify-center mr-4">
-                      <span className="font-semibold text-blue-600 dark:text-blue-300">
+                <Card className="bg-white/80 dark:bg-blue-900/50 backdrop-blur-lg rounded-2xl p-4 sm:p-6 h-full border border-blue-200/50 dark:border-blue-800/50 shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <div className="flex items-center mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 dark:from-blue-900/50 dark:to-cyan-900/50 flex items-center justify-center mr-3 sm:mr-4">
+                      <span className="font-semibold text-blue-600 dark:text-blue-300 text-sm sm:text-base">
                         {testimonial.name.charAt(0)}
                       </span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800 dark:text-white">{testimonial.name}</h4>
-                      <p className="text-sm text-blue-600 dark:text-blue-300">{testimonial.role}</p>
+                      <h4 className="font-bold text-gray-800 dark:text-white text-sm sm:text-base">{testimonial.name}</h4>
+                      <p className="text-xs sm:text-sm text-blue-600 dark:text-blue-300">{testimonial.role}</p>
                     </div>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 italic">"{testimonial.content}"</p>
-                  <div className="flex mt-4">
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 italic">"{testimonial.content}"</p>
+                  <div className="flex mt-3 sm:mt-4">
                     {[...Array(5)].map((_, i) => (
                       <svg
                         key={i}
-                        className="w-5 h-5 text-yellow-400"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -229,22 +229,22 @@ export default async function Page() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-3xl p-12 text-center"
+          className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-3xl p-6 sm:p-10 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-3 sm:mb-4">
             Ready to Experience Kyanite?
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-xs sm:max-w-md lg:max-w-2xl mx-auto mb-6 sm:mb-8">
             Join thousands of satisfied customers who have discovered the beauty and healing properties of authentic Nepalese kyanite.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <Link href="/shop">
-              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-6 py-3 text-sm sm:text-base sm:px-8 sm:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 Shop Now
               </Button>
             </Link>
             <Link href="/about">
-              <Button variant="outline" className="border-2 border-blue-600 text-blue-600 dark:border-cyan-400 dark:text-cyan-300 px-8 py-4 text-lg rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300">
+              <Button variant="outline" className="border-2 border-blue-600 text-blue-600 dark:border-cyan-400 dark:text-cyan-300 px-6 py-3 text-sm sm:text-base sm:px-8 sm:py-4 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-300">
                 Learn More
               </Button>
             </Link>

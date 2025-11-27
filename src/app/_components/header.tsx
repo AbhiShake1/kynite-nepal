@@ -23,7 +23,7 @@ export function Header() {
         className="flex items-center"
       >
         <Image
-          src="/placeholder.svg?height=40&width=40"
+          src="https://www.gemselect.com/graphics/kyanite-gem-large_info1.jpg"
           alt="Nepal"
           width={40}
           height={40}
