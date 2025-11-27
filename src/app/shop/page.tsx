@@ -1,128 +1,158 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Slider } from "@/components/ui/slider"
-import { Menu, X } from "lucide-react"
-import { createClient } from '@/prismicio'
-import { useQuery } from "react-query"
-import { PrismicNextImage } from '@prismicio/next'
-import { PrismicRichText } from '@prismicio/react'
-// import Form from "next/form"
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Page() {
-  const client = createClient()
+const products = [
+  {
+    id: 1,
+    name: "Premium Kyanite Specimen",
+    price: "$89.99",
+    image: "https://t4.ftcdn.net/jpg/06/09/51/79/360_F_609517985_tzJD0C3LmZDrHJlayickpoW7WiqlJ6UQ.jpg",
+    description: "A beautiful blue kyanite specimen with excellent crystal formation",
+    category: "Specimen",
+    featured: true
+  },
+  {
+    id: 2,
+    name: "Raw Kyanite Crystal",
+    price: "$59.99",
+    image: "https://t3.ftcdn.net/jpg/06/57/09/60/360_F_657096022_4I2KlZXpuXkNjHwk9CpFiLDh1XDErAwL.jpg",
+    description: "Raw kyanite crystal with natural edges and vibrant blue color",
+    category: "Raw Stone",
+    featured: false
+  },
+  {
+    id: 3,
+    name: "Blue Kyanite Healing Stone",
+    price: "$74.99",
+    image: "https://cdn.articlefiesta.com/rep/d57c81e8c39e4eb099d4020d953353c9.png",
+    description: "Carefully selected kyanite stone for healing and meditation practices",
+    category: "Healing",
+    featured: true
+  },
+  {
+    id: 4,
+    name: "Kyanite Quartz Specimen",
+    price: "$109.99",
+    image: "https://cdn11.bigcommerce.com/s-v1jc6q/product_images/uploaded_images/a-professional-jeweller-looking-at-kyanite-stones.png",
+    description: "Unique kyanite and quartz combination specimen",
+    category: "Specimen",
+    featured: false
+  },
+  {
+    id: 5,
+    name: "Natural Kyanite Slice",
+    price: "$44.99",
+    image: "https://i.redd.it/bxfa639l68rb1.jpg",
+    description: "Thin slice of natural kyanite showing beautiful crystal structure",
+    category: "Slice",
+    featured: false
+  },
+  {
+    id: 6,
+    name: "Kyanite Raw Mineral",
+    price: "$67.99",
+    image: "https://i.pinimg.com/736x/44/b7/46/44b746c1bbc5377fa41f1246fca4292f.jpg",
+    description: "High quality raw kyanite mineral from Nepalese mines",
+    category: "Raw Stone",
+    featured: true
+  },
+];
 
-  const { data: products } = useQuery({
-    queryKey: ['products'],
-    queryFn: () => client.getAllByType('product'),
-  })
-
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-  const [priceRange, setPriceRange] = useState([0, 300])
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [sortOrder, setSortOrder] = useState("featured")
-
-  if (!products) return null
-
-  const toggleCategory = (category: string) => {
-    setSelectedCategories(prev =>
-      prev.includes(category)
-        ? prev.filter(c => c !== category)
-        : [...prev, category]
-    )
-  }
-
-  const filteredProducts = products
-    .map(p => p.data)
-    .filter(product => true
-      // (selectedCategories.length === 0 || (!product.category || selectedCategories.includes(product.category))) &&
-      // product.price &&
-      // product.price >= priceRange[0] && product.price <= priceRange[1]
-    )
-    .sort((a, b) => {
-      if (!a.price || !b.price) return 0
-      if (sortOrder === "price-asc") return a.price - b.price
-      if (sortOrder === "price-desc") return b.price - a.price
-      return 0
-    })
-
+const ShopPage = () => {
   return (
-    <div className="container px-4 md:px-6 w-full">
-      <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-900 mb-4">
-        Shop Our Collection
-      </h1>
-      <div className="flex flex-col md:flex-row gap-6">
-        <aside className="w-full md:w-64 backdrop-blur-md bg-white/30 p-4 rounded-lg">
-          <div className="flex items-center justify-between md:hidden mb-4">
-            <h2 className="text-lg font-semibold text-blue-900">Filters</h2>
-            <Button variant="ghost" size="sm" onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}>
-              {mobileFiltersOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-cyan-100 dark:from-blue-950 dark:to-blue-900 py-12">
+      <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-cyan-300 mb-4">
+            Kyanite Collection
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+            Discover our carefully curated selection of authentic Nepalese kyanite stones
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200">
+              Ethically Sourced
+            </Badge>
+            <Badge variant="secondary" className="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-200">
+              Premium Quality
+            </Badge>
+            <Badge variant="secondary" className="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200">
+              Hand Selected
+            </Badge>
           </div>
-          <div className={`${mobileFiltersOpen ? 'block' : 'hidden'} md:block`}>
-            <h3 className="text-lg font-semibold text-blue-900 mb-2">Categories</h3>
-            {['Necklaces', 'Earrings', 'Bracelets', 'Rings', 'Anklets'].map((category) => (
-              <div key={category} className="flex items-center mb-2">
-                <Checkbox
-                  id={category}
-                  checked={selectedCategories.includes(category)}
-                  onCheckedChange={() => toggleCategory(category)}
-                />
-                <label htmlFor={category} className="ml-2 text-sm text-blue-800">
-                  {category}
-                </label>
-              </div>
-            ))}
-            <h3 className="text-lg font-semibold text-blue-900 mt-4 mb-2">Price Range</h3>
-            <Slider
-              min={0}
-              max={300}
-              step={10}
-              value={priceRange}
-              onValueChange={setPriceRange}
-              className="mb-2"
-            />
-            <div className="flex justify-between text-sm text-blue-800">
-              <span>${priceRange[0]}</span>
-              <span>${priceRange[1]}</span>
-            </div>
-          </div>
-        </aside>
-        <div className="flex-1">
-          <div className="flex justify-between items-center mb-4 text-primary">
-            <p className="text-sm text-blue-800">{filteredProducts.length} products</p>
-            <Select value={sortOrder} onValueChange={setSortOrder}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="featured">Featured</SelectItem>
-                <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                <SelectItem value="price-desc">Price: High to Low</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredProducts.map((product) => (
-              // @ts-expect-error uid exists
-              <Card key={product.uid} className="backdrop-blur-md bg-white/30 border-white/20 overflow-hidden">
-                <CardContent className="p-4">
-                  <PrismicNextImage field={product.image} />
-                  <h3 className="text-lg font-semibold text-blue-900">
-                    <PrismicRichText field={product.title} />
-                  </h3>
-                  <p className="text-blue-800">${product.price?.toFixed(2) ?? 0}</p>
-                  <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">Add to Cart</Button>
+        </motion.div>
+
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="overflow-hidden group hover:shadow-2xl transition-all duration-300 h-full flex flex-col bg-white/70 dark:bg-blue-900/30 backdrop-blur-sm border border-blue-200/50 dark:border-blue-800/50 rounded-2xl">
+                {product.featured && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500">Featured</Badge>
+                  </div>
+                )}
+                <CardHeader className="p-0">
+                  <div className="relative h-60 overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6 pt-4 flex-grow">
+                  <div className="flex justify-between items-start mb-2">
+                    <CardTitle className="text-xl font-bold text-gray-800 dark:text-white">
+                      {product.name}
+                    </CardTitle>
+                    <span className="text-lg font-semibold text-blue-600 dark:text-blue-300">
+                      {product.price}
+                    </span>
+                  </div>
+                  <div className="flex items-center mb-3">
+                    <Badge variant="outline" className="bg-blue-50/50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800">
+                      {product.category}
+                    </Badge>
+                  </div>
+                  <CardDescription className="text-gray-600 dark:text-gray-300">
+                    {product.description}
+                  </CardDescription>
                 </CardContent>
+                <CardFooter className="p-6 pt-0">
+                  <Link href={`/shop/${product.id}`} className="w-full">
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white">
+                      View Details
+                    </Button>
+                  </Link>
+                </CardFooter>
               </Card>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default ShopPage;

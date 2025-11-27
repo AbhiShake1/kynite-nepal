@@ -1,3 +1,4 @@
+"use client";
 import type { Metadata } from "next";
 import { Comfortaa as Font } from "next/font/google";
 import "./globals.css";
@@ -10,10 +11,10 @@ const font = Font({
   display: "swap",
 })
 
-export const metadata: Metadata = {
-  title: "Kyanite Nepal",
-  description: "Gems, jewelry, and accessories from Kyanite Nepal",
-};
+// export const metadata: Metadata = {
+//   title: "Kyanite Nepal",
+//   description: "Gems, jewelry, and accessories from Kyanite Nepal",
+// };
 
 export default function RootLayout({
   children,
