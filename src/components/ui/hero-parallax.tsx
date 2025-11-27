@@ -28,34 +28,37 @@ export const HeroParallax = ({
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
+  // Set translation values to create alternating parallax effect
+  // Elements start offset and move toward center as user scrolls
+  // This gives the alternating parallax effect while starting centered
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [-100, 0]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [100, 0]),
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [5, 0]),
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    useTransform(scrollYProgress, [0, 0.2], [0.4, 1]),
     springConfig
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [5, 0]),
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [-400, 150]),
     springConfig
   );
   return (
     <div
       ref={ref}
-      className="h-[200vh] sm:h-[300vh] py-20 sm:py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[150vh] sm:h-[250vh] overflow-hidden overflow-x-clip antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -65,9 +68,9 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="flex flex-col items-center"
+        className="flex flex-col items-center w-full max-w-[100vw] mx-auto"
       >
-        <motion.div className="flex flex-col sm:flex-row sm:flex-row-reverse sm:space-x-reverse sm:space-x-4 sm:mb-10 mb-6 justify-center">
+        <motion.div className="flex flex-col sm:flex-row sm:space-x-2 md:space-x-4 sm:mb-8 mb-6 justify-center w-full items-center">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -76,7 +79,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-col sm:flex-row sm:mb-10 mb-6 space-x-0 sm:space-x-4 justify-center">
+        <motion.div className="flex flex-col sm:flex-row sm:mb-8 mb-6 space-x-0 sm:space-x-2 md:space-x-4 justify-center w-full items-center">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -85,7 +88,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-col sm:flex-row sm:flex-row-reverse sm:space-x-reverse sm:space-x-4 justify-center">
+        <motion.div className="flex flex-col sm:flex-row sm:space-x-2 md:space-x-4 justify-center w-full items-center">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -101,7 +104,7 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-10 sm:py-20 px-4 w-full left-0 top-0">
+    <div className="max-w-7xl relative mx-auto py-6 sm:py-10 md:py-20 px-4 w-full left-0 top-0">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -157,7 +160,7 @@ export const ProductCard = ({
       }}
       whileTap={{ scale: 0.98 }}
       key={product.title}
-      className="group/product h-80 w-64 sm:w-72 md:w-[30rem] relative shrink-0 rounded-3xl overflow-hidden shadow-2xl"
+      className="group/product h-64 sm:h-80 w-[90%] sm:w-64 md:w-72 lg:w-80 relative shrink-0 rounded-3xl overflow-hidden shadow-2xl mb-4 sm:mb-0 mx-1 sm:mx-2 flex-shrink-0"
     >
       <a
         href={product.link}
@@ -172,8 +175,8 @@ export const ProductCard = ({
           alt={product.title}
         />
       </a>
-      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-3xl opacity-0 group-hover/product:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4 sm:p-6"></div>
-      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/70 to-transparent rounded-3xl opacity-0 group-hover/product:opacity-100 transition-opacity duration-300">
+      <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-3xl opacity-0 group-hover/product:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4"></div>
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent rounded-3xl opacity-0 group-hover/product:opacity-100 transition-opacity duration-300">
         <h2 className="text-white text-lg sm:text-xl font-semibold mb-2">{product.title}</h2>
         <div className="flex items-center">
           <span className="text-cyan-300 text-xs sm:text-sm">View details</span>
